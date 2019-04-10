@@ -61,7 +61,21 @@ app.get("/", function(req, resp){
     resp.sendFile(pF+"/home.html")
 });
 
-server.listen(8080, function(err){
+app.get("/login", function(req, resp){
+    resp.sendFile(pF+"/login.html")
+});
+
+app.get("/building", function(req, resp){
+    resp.sendFile(pF+"/building.html")
+});
+app.get("/floor", function(req, resp){
+    resp.sendFile(pF+"/floor.html")
+});
+app.get("/trap", function(req, resp){
+    resp.sendFile(pF+"/trap.html")
+});
+
+server.listen(8008, function(err){
     if(err){
         console.log(err);
         return false;

@@ -1,16 +1,16 @@
 $(document).ready(function() {
-    document.getElementById("datetime").value = new Date().toLocaleDateString()
+    //document.getElementById("datetime").value = new Date().toLocaleDateString()
     function getTraps(){
         $("#myTable").find("tr:gt(0)").remove();
         $.ajax({
             type: 'GET',
-            url: 'https://localhost:5001/api/trap',
+            url: 'https://trap-track.herokuapp.com/api/traps',
             cache: false,
             success:function(data){
                 console.log(data)
                 data.forEach(element => {
                     
-                    $('#myTable').append(`<tr><td>${element.id}</td><td>${element.trapType}</td><td>${element.timestamp.substring(0, 10)}</td><td>${element.location}</td><td>${element.amountOfBait.toString(10).substring(2)}%</td></tr>`);
+                    $('#myTable').append(`<tr><td>${element.Trap_ID}</td><td>${element.Trap_type}</td><td>${element.Time.substring(0, 10)}</td><td>${element.Bait_left}%</td></tr>`);
                 });
             }
         })
@@ -18,20 +18,17 @@ $(document).ready(function() {
 
     function addTrap(){
         name = document.getElementById("name").value
-        loc = document.getElementById("location").value
-        date = document.getElementById("datetime").value
-        AOB = document.getElementById("Bait").value
+        AOB = parseInt(document.getElementById("Bait").value*100)
         
         newData = {
-            "trapType": name,
-            "timestamp" : date,
-            "location" : loc,
-            "amountOfBait" : AOB
+            "Trap_type": name,
+            "Floor_ID": "1",
+            "Bait_left" : AOB
         };
         console.log(newData)
         $.ajax({
             type: "POST",
-            url: 'https://localhost:5001/api/trap',
+            url: 'https://trap-track.herokuapp.com/api/traps/create',
             data: JSON.stringify(newData),
             dataType: 'json',
             contentType: 'application/json',
@@ -45,6 +42,7 @@ $(document).ready(function() {
     document.getElementById("submit").addEventListener("click",function(){
         addTrap()
     })
+
     //$('#myTable').DataTable();
     getTraps()
 });

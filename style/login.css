@@ -1,0 +1,36 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: arial;
+    font-size: 12pt;
+    color: white;
+}
+
+#loginBackground {
+    background-image: url("https://www.wallpaperup.com/uploads/wallpapers/2013/03/24/60551/4648f6fe6d2546d52611bca9168261e4-700.jpg");
+    background-size: contain;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    z-index: -10;
+}
+
+#loginSection {
+    height: 50vh;
+    width: 30vw;
+}
+
+}
+#loginInp {
+    font-family: arial;
+    font-size: 12pt;
+    color: white;
+}
+
+#holder {
+    position: absolute;
+    top: 30vh;
+    left: 35vw;
+}

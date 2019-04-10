@@ -8,16 +8,12 @@ const pg = require('pg');
 
 const config = {
     user: 'postgres',
-    database: 'sot',
+    database: 'trap',
     password: 'password',
     port: 5432
 };
 
 const pool = new pg.Pool(config);
-
-router.post("/rosearch",function (req,resp) {
-    resp.send("Hello")
-})
 
 // query database based on user search parameters
 router.post("/AroSearch", function (req,resp){
@@ -25,12 +21,7 @@ router.post("/AroSearch", function (req,resp){
     var roSearchWord = req.body.roSearchWord;
     var searchBy = req.body.roSearchBy;
     var roStatus = req.body.roStatus;
-    
-    //console.log(roSearchWord);
-    //console.log(searchBy);
-    //console.log(roStatus);
-    
-    
+        
     
     pool.connect(function (err, client, done){
         if (err) {
@@ -45,7 +36,6 @@ router.post("/AroSearch", function (req,resp){
                     resp.send(null);
                 }
                 else{
-                    //console.log(result.rows);
                     resp.send(result.rows);
 
                 }
@@ -59,11 +49,8 @@ router.post("/AroSearch", function (req,resp){
 
 // search for task information using the repair order ID (ro_id)
 router.post("/taskSearch", function (req,resp){
-    //console.log("taskSearch ajax");
     
     var roID = req.body.roID;
-    
-    //console.log(roID);
     
     var data = [roID];
     
@@ -74,7 +61,6 @@ router.post("/taskSearch", function (req,resp){
             console.log("(taskSearch - Unable to connect to the database: " + err );
         }
         else{
-            //console.log("taskSearch - Successfully login to database!")
             client.query(taskQuery, data, function(err, result){
                 done();
                 if(err){
@@ -82,7 +68,6 @@ router.post("/taskSearch", function (req,resp){
                     resp.send(null);
                 }
                 else{
-                    //console.log(result.rows);
                     resp.send(result.rows);
                 }
             })
@@ -93,7 +78,6 @@ router.post("/taskSearch", function (req,resp){
 });
 
 router.post("/PartSearch", function (req,resp){
-    //console.log("taskSearch ajax");
     
     var ID = req.body.id;
     
@@ -108,7 +92,6 @@ router.post("/PartSearch", function (req,resp){
             console.log("(PartsSearch - Unable to connect to the database: " + err );
         }
         else{
-            //console.log("PartsSearch - Successfully login to database!")
             client.query(taskQuery, data, function(err, result){
                 done();
                 if(err){
@@ -127,11 +110,8 @@ router.post("/PartSearch", function (req,resp){
 });
 
 router.post("/LabourSearch", function (req,resp){
-    //console.log("taskSearch ajax");
     
     var ID = req.body.id;
-    
-    //console.log(roID);
     
     var data = [ID];
     
@@ -142,7 +122,6 @@ router.post("/LabourSearch", function (req,resp){
             console.log("(LabourSearch - Unable to connect to the database: " + err );
         }
         else{
-            //console.log("LabourSearch - Successfully login to database!")
             client.query(taskQuery, data, function(err, result){
                 done();
                 if(err){
@@ -150,7 +129,6 @@ router.post("/LabourSearch", function (req,resp){
                     resp.send(null);
                 }
                 else{
-                    //console.log(result.rows);
                     resp.send(result.rows);
                 }
             })
@@ -167,7 +145,6 @@ async function updateTaskCommentsLoop(arraytaskIDComments){
         var taskcomments = await arraytaskIDComments[i].comments;
         var taskid = await arraytaskIDComments[i].worktask_id;
         const varr = await connectDBTaskComments(taskid, taskcomments).then().catch(err => console.log(err));
-        //console.log("Task Comments Async function successful for loop "+i);
         if(i == (arraytaskIDComments.length-1)){
             return;
         }
@@ -185,8 +162,6 @@ var connectDBTaskComments = (worktask_id, comments) => {
                     reject(err);
                 }
                 else{
-                    //console.log("updateRO - Successfully login to database!");
-
                     var commentsData = [comments, worktask_id];
                     var updateQuery = 'UPDATE repair_tasks SET comments = $1 WHERE worktask_id = $2';
 
@@ -198,7 +173,6 @@ var connectDBTaskComments = (worktask_id, comments) => {
 
                         }
                         else{
-                            //console.log("updateRO successful");
                             resolve("updateRO successful");
                         }
                     });
@@ -233,11 +207,9 @@ router.post("/updateRO", function (req,resp){
         odometerOut = null;
     }
     var odometerOutData = [odometerOut, roID];
-    console.log(odometerOutData)
     var updateOdoQuery = 'UPDATE repair_order SET odometer_out = $1 WHERE ro_id = $2';
     
     var opencloseData = [openClose, roID];
-    console.log(opencloseData)
     var updateroStatus = 'UPDATE repair_order SET status = $1 WHERE ro_id = $2';
     
     pool.connect(function (err, client, done){
@@ -282,10 +254,6 @@ router.post("/updateParts", function (req,resp){
     temp.push(parseInt(req.body.row[5]))
     
     
-    console.log(temp)
-    console.log(req.body.id)
-    console.log("type")
-    console.log(req.body.type)
     if(req.body.type == "new"){
         temp.push(parseInt(req.body.id))
         var updateOdoQuery = 'INSERT INTO parts (part_no, part_desc, qty, unit_price, sell_price, supplier_name, worktask_id) VALUES ($1,$2,$5,$4,$6,$3,$7)';
@@ -294,7 +262,6 @@ router.post("/updateParts", function (req,resp){
         temp.push(parseInt(req.body.type))
         var updateOdoQuery = 'Update parts Set part_no = $1, part_desc = $2, qty=$5, unit_price=$4, sell_price=$6, supplier_name=$3 where part_id = $7';
     }
-    console.log(temp)
     pool.connect(function (err, client, done){
             if (err) {
                 console.log("(updateParts - Unable to connect to the database: " + err );
@@ -325,7 +292,6 @@ router.post("/updateLabour", function (req,resp){
     temp.push(parseFloat(req.body.row[2]))
     temp.push(parseFloat(req.body.row[3]))
     
-    console.log(req.body.type)
     if(req.body.type == "new"){
         temp.push(parseInt(req.body.id))
         var updateOdoQuery = 'INSERT INTO labour (tech_no , tech_name , hours , rate , worktask_id) VALUES ($1,$2,$3,$4,$5)';
@@ -334,7 +300,6 @@ router.post("/updateLabour", function (req,resp){
         temp.push(parseInt(req.body.type))
         var updateOdoQuery = 'Update labour Set tech_no = $1 , tech_name =$2 , hours =$3 , rate =$4 where labour_id = $5';
     }
-    console.log(temp)
     
     
     pool.connect(function (err, client, done){
