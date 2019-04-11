@@ -48,15 +48,72 @@ $(document).ready(function () {
                 console.log(data)
                 data.forEach(element => {
                     if(element.Floor_ID == document.getElementById('f_id').value) {
-                        $('#myTable').append(`<tr><td>${element.Trap_ID}</td><td>${element.Floor_ID}</td><td>${element.Trap_type}</td><td>${element.Time.substring(0, 10)}</td>
-                       <td>${element.Bait_left}</td><td><input type="button" onclick="createPDF(this)" style=" height:50px; width:50px;
+                        $('#myTable').append(`<tr><td id=${element.Trap_ID}>${element.Trap_ID}</td><td id=${element.Trap_ID}>${element.Floor_ID}</td><td id=${element.Trap_ID}>${element.Trap_type}</td><td id=${element.Trap_ID}>${element.Time.substring(0, 10)}</td>
+                       <td id=${element.Trap_ID}>${element.Bait_left}</td><td><input type="button" onclick="createPDF(this)" style=" height:50px; width:50px;
                          background: url('https://image.flaticon.com/icons/png/128/337/337946.png'); background-size: contain;"/></td></tr>`);
                     }
 
                 });
             }
         })
+        window.setTimeout(function () {
+            table = document.getElementById('myTable')
+            rows = table.getElementsByTagName('tr')
+            for (i in rows) {
+
+                if (!isNaN(parseInt(i)) && i > 0) {
+                    table.rows[i].addEventListener('click', function (e) {
+                        console.log(e.target.id)
+                        if(!isNaN(parseInt(e.target.id))){
+                            document.getElementById('t_id').value = e.target.id
+                            document.getElementById('editModal').style.display = 'block'
+                        }
+                    })
+                }
+            }
+        }, 1000);
     }
+    document.getElementById('editBut').addEventListener('click',function(){
+        name = document.getElementById("name2").value
+        AOB = parseInt(document.getElementById("Bait2").value * 100)
+        floor = document.getElementById('f_id').value
+        trap = document.getElementById('t_id').value
+
+        newData = {
+            "Trap_type": name,
+            "Floor_ID": floor,
+            "Bait_left": AOB
+        };
+        console.log(newData)
+        $.ajax({
+            type: "PUT",
+            url: `https://trap-track.herokuapp.com/api/traps/update/${trap}`,
+            data: JSON.stringify(newData),
+            dataType: 'json',
+            contentType: 'application/json',
+        });
+        window.setTimeout(function () {
+            document.getElementById('editModal').style.display = 'none'
+            getTraps("hi")
+        }, 1000);
+        
+    })
+    document.getElementById('DelBut').addEventListener('click',function(){
+        trap = document.getElementById('t_id').value
+
+        $.ajax({
+            type: "DELETE",
+            url: `https://trap-track.herokuapp.com/api/traps/delete/${trap}`,
+        });
+        window.setTimeout(function () {
+            document.getElementById('editModal').style.display = 'none'
+            getTraps("hi")
+        }, 1000);
+        
+    })
+    document.getElementById('cancelBut').addEventListener('click',function(){
+        document.getElementById('editModal').style.display = 'none'
+    })
     document.getElementById('Trapsearch').addEventListener('click', function () {
         getTraps(document.getElementById('trapInput').value)
     })

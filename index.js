@@ -91,6 +91,10 @@ app.post("/trap", function(req, resp){
     })
 });
 
+app.post("/login", function(req, resp){
+    window.location.href = '/buildings'
+});
+
 server.listen(8008, function (err) {
     if (err) {
         console.log(err);

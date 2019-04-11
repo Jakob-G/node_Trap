@@ -42,27 +42,27 @@
                 <div id="menuPosition"></div>
             </div>
             <div id="holder">
-                <form id="loginSection" action="/login" method="post">
+                <div id="loginSection">
                     <div class="modal-body mx-3" id="loginInp">
                         <div class="md-form mb-5">
                             <i class="fas fa-envelope prefix grey-text"></i>
-                            <label data-error="wrong" data-success="right" style="color:#ffffff">ID:</label>
+                            <label data-success="right" style="color:#ffffff">ID:</label>
                             <input name="id" type="text" id="loginId" class="form-control validate" required>
                         </div>
 
                         <div class="md-form mb-4">
                             <i class="fas fa-lock prefix grey-text"></i>
-                            <label data-error="wrong" data-success="right" style="color:#ffffff">Password:</label>
+                            <label data-success="right" style="color:#ffffff">Password:</label>
                             <input name="password" type="password" id="loginPass" class="form-control validate" required>
                         </div>
                     </div>
 
                     <div class="modal-footer d-flex justify-content-center">
-                        <button id="loginBut" type="submit" class="btn btn-primary" style="color: #000;
+                        <button id="loginBut" class="btn btn-primary" style="color: #000;
                         background-color: #ffffff;
                         border-color: #000000;">Login</button>
                     </div> 
-                </form>
+                </div>
             </div>
         </div>  
     </body>
