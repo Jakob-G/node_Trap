@@ -7,8 +7,8 @@
     <!-- Latest compiled and minified CSS -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js">
+    </script>
 
     <!-- jQuery library -->
 
@@ -22,7 +22,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- JavaScript -->
-    <script src="/scripts/floor.js"></script>
+    <script src="/scripts/home.js"></script>
 </head>
 
 <body>
@@ -32,41 +32,45 @@
             <input type="text" id="f_id">
         </form>
         <div id="headder">Trap Track</div>
-        <h1><a href="/">Building</a> > Floor</h1>
+        <h1>Welcome to Trap track</h1>
         <div id="search">
-            <h1>Search for a Floor</h1>
+            <h1>Search for a Building</h1>
             <input name="building" type="text" id="trapInput" class="form-control validate" required>
             </br>
             <button id="Trapsearch" class="btn btn-primary">Search</button>
             <button id="add_new" class="btn btn-primary">Add New</button>
         </div>
-        <!-- start modal -->
+        <!-- in modal -->
         <div id="contaner" class="container">
-            <h1>Floor Form</h1>
-            <form id="floorForm">
+            <h1>Building Form</h1>
+            <form id="buildingForm">
 
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" required name="name">
                 </div>
+
+                <div class="form-group">
+                    <label for="amount">Location</label>
+                    <input type="text" class="form-control" id="Location" required name="name">
+                </div>
             </form>
             <button id="submit">Submit</button>
         </div>
-        <!-- end modal -->
+        <!--end modal  -->
         </br>
         </br>
-        <div id=tables>
-            <table id=myTable class="display table table-striped table-bordered responsive nowrap" style="width: 50%;">
-                <thead>
-                    <tr>
-                        <th>Floor ID</th>
-                        <th>Floor Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
+        <table id=myTable class="display table table-striped table-bordered responsive nowrap" style="width: 75%;">
+            <thead>
+                <tr>
+                    <th>Building ID</th>
+                    <th>Building Name</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
 </body>
 
