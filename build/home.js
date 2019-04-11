@@ -30,7 +30,7 @@ $(document).ready(function () {
                             console.log(e.target.id)
                             document.getElementById('b_id').value = e.target.id
                             console.log(document.getElementById('b_id').value)
-                            document.getElementById('myform').submit
+                            document.getElementById('myform').submit();
                         })
                 }
             }

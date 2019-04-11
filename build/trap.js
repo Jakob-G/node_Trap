@@ -30,10 +30,11 @@ $(document).ready(function () {
     function addTrap() {
         name = document.getElementById("name").value
         AOB = parseInt(document.getElementById("Bait").value * 100)
+        floor = document.getElementById('f_id').value
 
         newData = {
             "Trap_type": name,
-            "Floor_ID": "1",
+            "Floor_ID": floor,
             "Bait_left": AOB
         };
         console.log(newData)
