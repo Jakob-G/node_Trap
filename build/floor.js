@@ -16,7 +16,9 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data)
                 data.forEach(element => {
+                    if(element.Building_IDgit == document.getElementById('b_id').value) {
                     $('#myTable').append(`<tr><td id=${element.Floor_ID}>${element.Floor_ID}</td><td id=${element.Floor_ID}>${element.Floor_name}</td></tr>`);
+                    }
                 });
             }
         })

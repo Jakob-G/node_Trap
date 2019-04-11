@@ -58,7 +58,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get("/", function (req, resp) {
-    resp.sendFile(pF + "/home.html")
+    resp.sendFile(pF + "/login.html")
 });
 
 app.get("/login", function (req, resp) {
@@ -75,6 +75,7 @@ app.get("/trap", function (req, resp) {
     resp.sendFile(pF + "/trap.html")
 });
 app.post("/floor", function(req, resp){
+    console.log(req.body)
     resp.render(pF+"/floor.hbs",{
         b_id: req.body.b_id,
         f_id: req.body.f_id,

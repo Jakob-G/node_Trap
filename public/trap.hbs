@@ -31,7 +31,7 @@
         <input style="display: none" type="text" id="f_id" value="{{f_id}}">
     </div>
     <div id="headder">Trap Track</div>
-    <h1><a href="/">Building</a> > <a href="/building">Floor</a> > Traps</h1>
+    <h1><a href="/building">Building</a> > <hi id='test'>Floor</a> > Traps</h1>
     <div id="search">
         <h1>Search for a trap</h1>
         <input name="building" type="text" id="trapInput" class="form-control validate" required>
@@ -41,6 +41,10 @@
     </div>
     <!-- in modal -->
     <div id="contaner" class="container">
+        <form id="myform2" action="/floor" method="post">
+            <input  style="display: none" type="text" id="b_id" name="b_id" value="{{b_id}}">
+            <input  style="display: none" type="text" id="f_id" name="f_id" value="{{f_id}}">
+        </form>
         <h1>Trap Form</h1>
         <form id="TrapForm">
 
@@ -74,6 +78,7 @@
     <!--end modal  -->
     </br>
     </br>
+    <h1>You are editing building {{b_id}} floor {{f_id}}</h1>
     <table id=myTable class="display table table-striped table-bordered responsive nowrap" style="width: 80%;">
         <thead>
             <tr>
