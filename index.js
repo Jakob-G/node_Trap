@@ -58,11 +58,13 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get("/", function (req, resp) {
-    resp.sendFile(pF + "/home.html")
+    resp.sendFile(pF + "/login.html")
 });
 
-app.get("/login", function (req, resp) {
-    resp.sendFile(pF + "/login.html")
+
+app.get("/login", function(req, resp){
+	
+    resp.sendFile(pF+"/login.html")
 });
 
 app.get("/building", function (req, resp) {
