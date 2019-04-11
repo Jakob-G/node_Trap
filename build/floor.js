@@ -42,11 +42,11 @@ $(document).ready(function () {
         //     dataType: 'json',
         //     contentType: 'application/json',
         // });
-        window.setTimeout(function(){
+        window.setTimeout(function () {
             document.getElementById('contaner').style.display = 'none'
             getTraps("hi")
         }, 1000);
-        
+
     }
     document.getElementById("submit").addEventListener("click", function () {
         addBuilding()
