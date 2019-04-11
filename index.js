@@ -61,8 +61,10 @@ app.get("/", function (req, resp) {
     resp.sendFile(pF + "/login.html")
 });
 
-app.get("/login", function (req, resp) {
-    resp.sendFile(pF + "/login.html")
+
+app.get("/login", function(req, resp){
+	
+    resp.sendFile(pF+"/login.html")
 });
 
 app.get("/building", function (req, resp) {

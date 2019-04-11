@@ -5,8 +5,7 @@ $(document).ready(function () {
         var uri = ''
         if (!isNaN(parseInt(x))) {
             uri = `https://trap-track.herokuapp.com/api/floors/${x}`
-        }
-        else {
+        } else {
             uri = 'https://trap-track.herokuapp.com/api/floors'
         }
         $.ajax({
@@ -16,24 +15,24 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data)
                 data.forEach(element => {
-                    if(element.Building_IDgit == document.getElementById('b_id').value) {
-                    $('#myTable').append(`<tr><td id=${element.Floor_ID}>${element.Floor_ID}</td><td id=${element.Floor_ID}>${element.Floor_name}</td></tr>`);
+                    if (element.Building_ID == document.getElementById('b_id').value) {
+                        $('#myTable').append(`<tr><td id=${element.Floor_ID}>${element.Floor_ID}</td><td id=${element.Floor_ID}>${element.Floor_name}</td></tr>`);
                     }
                 });
             }
         })
-        window.setTimeout(function(){
+        window.setTimeout(function () {
             table = document.getElementById('myTable')
             rows = table.getElementsByTagName('tr')
-            for(i in rows){
-                
-                if(!isNaN(parseInt(i)) && i > 0){
-                    table.rows[i].addEventListener('click',function(e){
-                            console.log(e.target.id)
-                            document.getElementById('f_id').value = e.target.id
-                            console.log(document.getElementById('f_id').value)
-                            document.getElementById('myform').submit();
-                        })
+            for (i in rows) {
+
+                if (!isNaN(parseInt(i)) && i > 0) {
+                    table.rows[i].addEventListener('click', function (e) {
+                        console.log(e.target.id)
+                        document.getElementById('f_id').value = e.target.id
+                        console.log(document.getElementById('f_id').value)
+                        document.getElementById('myform').submit();
+                    })
                 }
             }
         }, 1000);
@@ -44,6 +43,7 @@ $(document).ready(function () {
     document.getElementById('add_new').addEventListener('click', function () {
         document.getElementById('contaner').style.display = 'block'
     })
+
     function addBuilding() {
         name = document.getElementById("name").value
         building = document.getElementById("b_id").value
