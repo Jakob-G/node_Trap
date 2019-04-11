@@ -35,7 +35,7 @@ const sessionCheck = (req, res, next) => {
     }
 }
 
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept");
@@ -43,45 +43,45 @@ app.use(function(req, res, next){
 });
 
 app.use(expressSession({
-    secret:"HIGJLCPJOPUD",
+    secret: "HIGJLCPJOPUD",
     resave: true,
-    saveUninitialized:true
+    saveUninitialized: true
 }));
 
 app.use("/scripts", exp.static("build"));
 app.use("/css", exp.static("style"));
-app.use("/pages",exp.static("public"));
-app.use("/dependencies",exp.static("src"))
+app.use("/pages", exp.static("public"));
+app.use("/dependencies", exp.static("src"))
 
 app.use(bodyParser.urlencoded({
-    extended:true
+    extended: true
 }));
 
-app.get("/", function(req, resp){
-    resp.sendFile(pF+"/home.html")
+app.get("/", function (req, resp) {
+    resp.sendFile(pF + "/home.html")
 });
 
-app.get("/login", function(req, resp){
-    resp.sendFile(pF+"/login.html")
+app.get("/login", function (req, resp) {
+    resp.sendFile(pF + "/login.html")
 });
 
-app.get("/building", function(req, resp){
-    resp.sendFile(pF+"/building.html")
+app.get("/building", function (req, resp) {
+    resp.sendFile(pF + "/building.html")
 });
-app.get("/floor", function(req, resp){
-    resp.sendFile(pF+"/floor.html")
+app.get("/floor", function (req, resp) {
+    resp.sendFile(pF + "/floor.html")
 });
-app.get("/trap", function(req, resp){
-    resp.sendFile(pF+"/trap.html")
+app.get("/trap", function (req, resp) {
+    resp.sendFile(pF + "/trap.html")
 });
 
-server.listen(8008, function(err){
-    if(err){
+server.listen(8008, function (err) {
+    if (err) {
         console.log(err);
         return false;
     }
-    
-    console.log(port+" is running");
+
+    console.log(port + " is running");
 });
 
 
