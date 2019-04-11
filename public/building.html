@@ -7,7 +7,8 @@
     <!-- Latest compiled and minified CSS -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
     <!-- jQuery library -->
 
@@ -21,39 +22,47 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- JavaScript -->
-    <script src="/scripts/home.js"></script>
+    <script src="/scripts/floor.js"></script>
 </head>
 
 <body>
     <div>
-        <h1>Home</h1>
-        <h1>Building > Floor</h1>
-        <input name="building" type="text" id="building" class="form-control validate" required>
-        <button id="buildingsearch" type="submit" class="btn btn-primary">Search</button>
-        <button id="add new" type="submit" class="btn btn-primary">Add New</button>
+        <div id="headder">Trap Track</div>
+        <h1><a href="/">Building</a> > Floor</h1>
+        <div id="search">
+            <h1>Search for a Floor</h1>
+            <input name="building" type="text" id="trapInput" class="form-control validate" required>
+            </br>
+            <button id="Trapsearch" class="btn btn-primary">Search</button>
+            <button id="add_new" class="btn btn-primary">Add New</button>
+        </div>
         <!-- start modal -->
-        <div class="container">
-                <h1>Floor Form</h1>
-                <form (ngSubmit)="onSubmit()" #trapForm="ngForm">
-        
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" required name="name">
-                    </div>
-                </form>
-                <button id="submit">Submit</button>
-            </div>
+        <div id="contaner" class="container">
+            <h1>Floor Form</h1>
+            <form id="floorForm">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" required name="name">
+                </div>
+            </form>
+            <button id="submit">Submit</button>
+        </div>
         <!-- end modal -->
-        <table id=myTable class="display table table-striped table-bordered responsive nowrap" style="width: 50%;">
-            <thead>
-                <tr>
-                    <th>Floor ID</th>
-                    <th>Floor Name</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        </br>
+        </br>
+        <div id=tables>
+            <table id=myTable class="display table table-striped table-bordered responsive nowrap" style="width: 50%;">
+                <thead>
+                    <tr>
+                        <th>Floor ID</th>
+                        <th>Floor Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 

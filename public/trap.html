@@ -30,15 +30,19 @@
         <input type="text" id="b_id">
         <input type="text" id="f_id">
     </div>
-    <h1>Home</h1>
-    <h1>Building > Floor > Traps</h1>
-    <input name="building" type="text" id="building" class="form-control validate" required>
-    <button id="buildingsearch" type="submit" class="btn btn-primary">Search</button>
-    <button id="add new" type="submit" class="btn btn-primary">Add New</button>
+    <div id="headder">Trap Track</div>
+    <h1><a href="/">Building</a> > <a href="/building">Floor</a> > Traps</h1>
+    <div id="search">
+        <h1>Search for a trap</h1>
+        <input name="building" type="text" id="trapInput" class="form-control validate" required>
+        </br>
+        <button id="Trapsearch" class="btn btn-primary">Search</button>
+        <button id="add_new" class="btn btn-primary">Add New</button>
+    </div>
     <!-- in modal -->
-    <div class="container">
+    <div id="contaner" class="container">
         <h1>Trap Form</h1>
-        <form (ngSubmit)="onSubmit()" #trapForm="ngForm">
+        <form id="TrapForm">
 
             <div class="form-group">
                 <label for="name">Name</label>
@@ -48,8 +52,7 @@
             <div class="form-group">
                 <label for="amount">Amount of Bait</label>
 
-                <input type="range" id="Bait" list="tickmarks" min=0.01 max=1 step=0.01 name="amount"
-                    onchange="updateSliderValue(this.value);">
+                <input type="range" id="Bait" list="tickmarks" min=0.01 max=1 step=0.01 name="amount">
 
                 <datalist id="tickmarks">
                     <option value="0.00" label="0%">
@@ -69,6 +72,7 @@
         <button id="submit">Submit</button>
     </div>
     <!--end modal  -->
+    </br>
     </br>
     <table id=myTable class="display table table-striped table-bordered responsive nowrap" style="width: 80%;">
         <thead>

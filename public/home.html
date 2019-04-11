@@ -27,15 +27,19 @@
 
 <body>
     <div>
+        <div id="headder">Trap Track</div>
         <h1>Welcome to Trap track</h1>
-        <input name="building" type="text" id="building" class="form-control validate" required>
-        <button id="buildingsearch" type="submit" class="btn btn-primary">Search</button>
-        <button id="add new" type="submit" class="btn btn-primary">Add New</button>
-        <!-- start modal -->
-        <!-- new building form -->
-        <div class="container">
+        <div id="search">
+            <h1>Search for a Building</h1>
+            <input name="building" type="text" id="trapInput" class="form-control validate" required>
+            </br>
+            <button id="Trapsearch" class="btn btn-primary">Search</button>
+            <button id="add_new" class="btn btn-primary">Add New</button>
+        </div>
+        <!-- in modal -->
+        <div id="contaner" class="container">
             <h1>Building Form</h1>
-            <form (ngSubmit)="onSubmit()" #trapForm="ngForm">
+            <form id="buildingForm">
 
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -49,7 +53,9 @@
             </form>
             <button id="submit">Submit</button>
         </div>
-        <!-- end modal -->
+        <!--end modal  -->
+        </br>
+        </br>
         <table id=myTable class="display table table-striped table-bordered responsive nowrap" style="width: 75%;">
             <thead>
                 <tr>
